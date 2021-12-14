@@ -1,12 +1,13 @@
 import React from 'react';
-import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+// import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap';
 import '../index.css';
 
 const Header = () => {
     return (
         <nav>
             <div className='logo'>
-                ShopNow
+                <a href='/'>ShopNow</a>
             </div>
 
             <form action="#">
@@ -14,8 +15,8 @@ const Header = () => {
             </form>
 
             <div className='navlink'>
-                <a href=''> <i className='fas fa-shopping-cart'></i> Cart</a>
-                <a href=''><i className='fas fa-user-alt'></i> Login</a>
+                <a href='/'> <i className='fas fa-shopping-cart'></i> Cart</a>
+                <a href='/'><i className='fas fa-user-alt'></i> Login</a>
             </div>
             
         </nav>
