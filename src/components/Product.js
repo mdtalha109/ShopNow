@@ -28,11 +28,11 @@ const Product = ({product}) => {
                      <div className="card-price">
                          {product.price}
                      </div>
-
-                     <div className="card-add_to_cart">
+                </Link>
+                     <button className="card-add_to_cart">
                          Add to Cart
-                     </div>
-                 </Link>
+                     </button>
+                 
             </div>
 
     )

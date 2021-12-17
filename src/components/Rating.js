@@ -6,6 +6,7 @@ const Rating = ({value, text}) => {
             <div className='rating'>
                 <span>
                     <i className={value>=1 ? 'fas fa-star' : value>=0.5? 'fas fa-star-half-alt' :'fas fa-star'}></i>
+                   
                 </span>
             </div>
 
@@ -30,8 +31,10 @@ const Rating = ({value, text}) => {
             <div className='rating'>
                 <span>
                     <i className={value>=4 ? 'fas fa-star' : value>4.5? 'fas fa-star-half-alt' :'fas fa-star'}></i>
-                </span>
+                </span>  
             </div>
+
+            {text}
 
             
 

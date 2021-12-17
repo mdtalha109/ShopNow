@@ -45,6 +45,8 @@ nav>form>input{
 
 
 
+
+
 .card-image{
   overflow: hidden;
 }
@@ -63,11 +65,12 @@ nav>form>input{
 }
 
 .card-rating{
-  color: black !important;
+  color: rgb(0, 0, 0) !important;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 16px;
 }
 
 .card-price{
@@ -79,7 +82,17 @@ nav>form>input{
   background-color: black;
   text-align: center;
   padding: 10px 0;
+  width: 100%;
  
+}
+
+.btn-disabled{
+  color: white !important;
+  background-color: rgb(70, 70, 70);
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  
 }
 
 
@@ -88,10 +101,10 @@ nav>form>input{
 
 
  @media screen and (max-width:800px)  {
-   .card{
+   /* .card{
    
      
-   }
+   } */
 
  
 
