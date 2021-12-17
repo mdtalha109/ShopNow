@@ -9,7 +9,7 @@ const Product = ({product}) => {
         
 
             <div className="card">
-                <a href={`/product/${product._id}`}>
+                <Link to={`/product/${product._id}`}>
 
                      {/* <Card.Img src={product.image} /> */}
                      <div className="card-image">
@@ -32,7 +32,7 @@ const Product = ({product}) => {
                      <div className="card-add_to_cart">
                          Add to Cart
                      </div>
-                 </a>
+                 </Link>
             </div>
 
     )

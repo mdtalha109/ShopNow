@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <nav>
             <div className='logo'>
-                <a href='/'>ShopNow</a>
+                <Link to='/'>ShopNow</Link>
             </div>
 
             <form action="#">
@@ -15,8 +15,8 @@ const Header = () => {
             </form>
 
             <div className='navlink'>
-                <a href='/'> <i className='fas fa-shopping-cart'></i> Cart</a>
-                <a href='/'><i className='fas fa-user-alt'></i> Login</a>
+                <Link to='/'> <i className='fas fa-shopping-cart'></i> Cart</Link>
+                <Link to='/'><i className='fas fa-user-alt'></i> Login</Link>
             </div>
             
         </nav>

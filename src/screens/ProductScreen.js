@@ -1,15 +1,16 @@
 import React from 'react';
 
-import Rating from '../components/Rating';
-import products from '../products';
+// import Rating from '../components/Rating';
+// import Product from '../components/Product';
 
-const ProductScreen = ({match}) => {
-    const product = product.find(p => p._id === match.params.id)
+const ProductScreen = () => {
+    // const Product = Product.find(p => p._id === match.params.id)
     return (
-        <div>
-            
-        </div>
+        <>
+            <h1>Product page</h1>
+    
+        </>
     )
 }
 
-export default ProductScreen
+export default ProductScreen;
