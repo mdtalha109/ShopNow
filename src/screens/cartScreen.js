@@ -2,15 +2,18 @@ import react, {useEffect} from 'react'
 import { Link, useParams, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {Row, Col, ListGroup, Image, Form, Button, Card} from 'react-bootstrap'
-import { addToCart } from '../actions/cartActions'
+import { addToCart, removeFromCart } from '../actions/cartActions'
 
 
 const CartScreen = ({match}) => {
     const productId = useParams().id;
     let qty = useLocation().search;
+    console.log(qty)
 
     if(qty){
         qty=Number(qty.split('=')[1]);
+        console.log(qty)
+        
     }
     else qty=1;
 
@@ -25,7 +28,7 @@ const CartScreen = ({match}) => {
     }, [dispatch, productId, qty])
 
     const removeCartHandler = (id) => {
-        
+        dispatch(removeFromCart(id))
     }
 
     return (
