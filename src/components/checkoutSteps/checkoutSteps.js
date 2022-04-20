@@ -5,16 +5,18 @@ import './checkoutSteps.css'
 const checkoutSteps = ({step1, step2, step3, step4}) => {
     return ( 
         <Nav className='steps-container'>
-            <Nav.Item>
+                <div className='stepItem'>
                 {step1 ? (
                     <Link to='/login'> SignIn</Link>
                 ): <Nav.Link disabled>
                     Sign In
                     </Nav.Link>}
-            </Nav.Item>
+                </div>
+                
+            
 
-            <Nav.Item>
-                {step2 ? (
+           <div className='stepItem'>
+           {step2 ? (
                     <Link to='/shipping'>
                         
                             Shipping
@@ -23,31 +25,33 @@ const checkoutSteps = ({step1, step2, step3, step4}) => {
                 ): <Nav.Link disabled>
                     Shipping
                     </Nav.Link>}
-            </Nav.Item>
+            
+           </div>
+               
 
-            <Nav.Item>
-                {step3 ? (
+            <div className='stepItem'>
+            {step3 ? (
                     <Link to='/payment'>
                       
                             Payment
                        
                     </Link>
-                ): <Nav.Link disabled>
+                ): <Link to='/payment' className='disabled-link'>
                     Payment
-                    </Nav.Link>}
-            </Nav.Item>
+                    </Link>}
+            </div>
 
-            <Nav.Item>
-                {step4 ? (
+            <div className='stepItem'>
+            {step4 ? (
                     <Link to='/placeorder'>
                        
                             Place Order
                       
                     </Link>
-                ): <Nav.Link disabled>
+                ): <Link to='/placeorder' className='disabled-link'>
                     PlaceOrder
-                    </Nav.Link>}
-            </Nav.Item>
+                    </Link>}
+            </div>
         </Nav>
     )
 }

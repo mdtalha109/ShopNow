@@ -1,0 +1,14 @@
+::-webkit-scrollbar{
+    display: none;
+}
+.category-container{
+    display: flex;
+    justify-content: space-between;
+    overflow: scroll;
+    margin-bottom: 10px;
+    position: relative;
+    top: 10px;
+   
+  
+    
+}

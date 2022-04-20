@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
-import {Form, Button, Row, Col} from 'react-bootstrap'
 import {useDispatch, useSelector} from 'react-redux'
 import { toast, ToastContainer } from "react-toastify"
 import {register} from '../../actions/userActions'
 import { formContainer } from '../../components/formContainer/formContainer.js'
-import './SignupScreen.css'
+import './SignupPage.css'
+import { Card } from 'react-bootstrap'
 
-export const SignupScreen = () => {
+export const SignupPage = () => {
 
 
     const [name, setName] = useState('')
@@ -61,6 +61,7 @@ export const SignupScreen = () => {
     return (
         <>
             <div className='LoginForm-container'>
+            <Card>
                 <div className='LoginForm'>
                     <h1>Signup Form</h1>
 
@@ -104,12 +105,13 @@ export const SignupScreen = () => {
                     <div className='create-acc-container'><span>Already have an account? <Link to='/login'>Login here</Link></span></div>
                 </div>
                 <ToastContainer/>
-               
+                </Card>
             </div>
         
+           
         </>
 
     )
 }
 
-export default SignupScreen
+export default SignupPage

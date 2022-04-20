@@ -1,0 +1,45 @@
+.sidebar{
+    background-color: #12437b;
+    width: 20%;
+    position:fixed;
+    height: 100vh;
+  
+}
+
+.sidebar li{
+    list-style: none;
+    padding: 10px 0;
+    
+}
+
+.sidebar ul{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 20px 0;
+   
+}
+
+.sidebar li:hover{
+    background-color: rgb(31, 6, 6);
+}
+
+
+.sidebar a{
+    color: white;
+}
+
+
+
+
+
+.active{
+    color: black !important;
+    background-color: rgb(31, 6, 6);
+
+}
+
+
+
+
+

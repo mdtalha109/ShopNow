@@ -1,11 +1,20 @@
-a{
+/* a{
     text-decoration: none;
 }
 
 .steps-container{
-    
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
 }
+
+.stepItem{
+    margin: 0 30px !important;
+    padding: 0 !important;
+}
+
+.disabled-link{
+    pointer-events: none;
+    opacity: 0.5;
+} */

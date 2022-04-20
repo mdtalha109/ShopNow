@@ -34,11 +34,7 @@ const Rating = ({value, text}) => {
                 </span>  
             </div>
 
-            {text}
-
-            
-
-            
+            {text}    
         </>
     )
 }
