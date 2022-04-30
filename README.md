@@ -1,6 +1,8 @@
 # ShopNow-Frontend
 A responsive e-commerce web application where user can browse listed product and place an order.
 
+Backend Repository: https://github.com/mdtalha109/ShopNow-backend
+
 # Functionality
 * Signin
 * Signup
