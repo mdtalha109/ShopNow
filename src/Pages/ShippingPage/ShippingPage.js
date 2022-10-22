@@ -71,16 +71,7 @@ const ShippingScreen = ({history}) => {
             shippingPrice: cart.shippingPrice,
             taxPrice: cart.taxPrice,
             totalPrice: cart.cartItems.reduce((acc, item) => acc + item.qty *item.price, 0).toFixed(2),
-
         }))
-        console.log(cart.cartItems)
-        console.log(cart.shippingAddress)
-        console.log(cart.itemsPrice)
-        console.log(cart.shippingPrice)
-        console.log(cart.taxPrice)
-        console.log(cart.totalPrice)
-
-
 
     }
 
@@ -145,7 +136,7 @@ const ShippingScreen = ({history}) => {
             <Modal open={isOpen} close={closeModal}>
             <div className='LoginForm-container'>
                 <div className='LoginForm'>
-                    <h1>Payment Method</h1>
+                    <h3>Are you sure?</h3>
 
                     <div className='input-container'>
                        
