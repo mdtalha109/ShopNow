@@ -9,6 +9,7 @@ import '../index.css';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { logout } from '../actions/userActions';
+import axios from 'axios';
 
 
 const Header = () => {
@@ -16,6 +17,7 @@ const Header = () => {
     const navigate = useNavigate();
 
     const [searchKeyword, setSearchKeyword] = useState("")
+    const [suggestionList, setSuggestionList] = useState([]);
 
     const userLogin = useSelector(state => state.userLogin)
 
@@ -30,8 +32,18 @@ const Header = () => {
         dispatch(logout)
     }
 
-    const keywordHandler = (event) => {
+    const suggestionSet = new Set();
+
+    const keywordHandler = async(event) => {
         setSearchKeyword(event.target.value)
+        if(event.target.value.length > 1){
+            const {data} = await axios.get(`https://shopnow-backend-pro.herokuapp.com/api/products?keyword=${event.target.value}&price=`);
+            suggestionSet.add(data)
+             setSuggestionList((item) => [...suggestionSet])
+            console.log(suggestionList[0])
+        }else setSuggestionList([])
+       
+
     }
 
     const searchHandler = (e) => {
@@ -39,6 +51,7 @@ const Header = () => {
         navigate(`/search?q=${searchKeyword}`)
     }
 
+    
 
     return (
         <nav>
@@ -46,13 +59,23 @@ const Header = () => {
                 <Link to='/' style={{color:"white"}}>ShopNow</Link> 
             </div>
             <div className='nav-form'>
-            <form  method='GET' style={{display: 'flex'}}>
-                <input value={searchKeyword} onChange={keywordHandler}   type="text" id="input-search"  placeholder="Search..."/>
-                <button onClick={searchHandler} style={{color: "black", outline:"none", border:"none", padding:"0 10px"}}><i className='fas fa-search'></i></button>
-            </form>
+                <form  method='GET' style={{display: 'flex'}}>
+                    <input value={searchKeyword} onChange={keywordHandler}   type="text" id="input-search"  placeholder="Search..."/>
+                    <button onClick={searchHandler} style={{color: "black", outline:"none", border:"none", padding:"0 10px"}}><i className='fas fa-search'></i></button>
+                </form>
+                
+            {suggestionList.length > 0 && <div className='suggestion-list-container'>
+                    <ul>
+                        {suggestionList.length > 0 && suggestionList[0].map((item) => <li onClick={(e)=> {setSearchKeyword(item.name);searchHandler(e) }}>{item.name}</li>)}
+                    </ul>
+            </div> }
+                
             </div>
+           
+            
+            
             <div className='navlink'>
-                <Link to='/cart'> <i className='fas fa-shopping-cart'></i> <span>Cart {cartItems.length}</span></Link>
+                <Link to='/cart'> <i className='fas fa-shopping-cart'></i> <span>Cart <span style={{backgroundColor: "red", borderRadius: "50%", padding: '2px 7px'}}>{cartItems.length}</span></span></Link>
                 {
                     userInfo 
                    ? <Dropdown>
