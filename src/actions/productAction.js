@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { remote_config } from '../config/remoteURL.js';
+
 
 import { PRODUCT_LIST_REQUEST, 
          PRODUCT_LIST_SUCCESS, 
@@ -22,7 +24,7 @@ export const ListProducts = (searchKeyword='', sortByPrice) => async (dispatch) 
     try{
         dispatch({type: PRODUCT_LIST_REQUEST})
         console.log(searchKeyword)
-        const {data} = await axios.get(`https://shopnow-backend-pro.herokuapp.com/api/products?keyword=${searchKeyword}&price=${sortByPrice}`);
+        const {data} = await axios.get(`${remote_config.BACKEND_URL}/api/products?keyword=${searchKeyword}&price=${sortByPrice}`);
         dispatch ({
             type: PRODUCT_LIST_SUCCESS,  
             payload: data 
@@ -42,7 +44,7 @@ export const listProductDetails = (id) => async (dispatch) => {
     try{
         dispatch({type: PRODUCT_DETAILS_REQUEST})
         console.log('sending api request')
-        const {data} = await axios.get(`https://shopnow-backend-pro.herokuapp.com/api/products/${id}`);
+        const {data} = await axios.get(`${remote_config.BACKEND_URL}/api/products/${id}`);
         console.log('sent api request')
         dispatch ({
             type: PRODUCT_DETAILS_SUCCESS,
@@ -70,7 +72,7 @@ export const deleteProduct = (id) => async(dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
-        await axios.delete(`https://shopnow-backend-pro.herokuapp.com/api/products/${id}`, config)
+        await axios.delete(`${remote_config.BACKEND_URL}/api/products/${id}`, config)
         dispatch({
             type: PRODUCT_DELETE_SUCCESS
         })
@@ -99,7 +101,7 @@ export const createProduct = (productName, productCategory, productImage,product
         }
 
         
-        const {data} =  await axios.post(`https://shopnow-backend-pro.herokuapp.com/api/products`,{
+        const {data} =  await axios.post(`${remote_config.BACKEND_URL}/api/products`,{
             productName,
             productCategory,
             productImage,

@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { remote_config } from '../config/remoteURL'
+
 
 import { USER_DELETE_FAIL, USER_DELETE_REQUEST, USER_DELETE_SUCCESS, USER_DETAILS_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_LIST_FAIL, USER_LIST_REQUEST, USER_LIST_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_UPDATE_PROFILE_FAIL, USER_UPDATE_PROFILE_REQUEST, USER_UPDATE_PROFILE_SUCCESS } from "../constants/userConstants"
 
@@ -14,7 +16,7 @@ export const login = (email, password) => async(dispatch) => {
             }
         }
 
-        const { data } = await axios.post('https://shopnow-backend-pro.herokuapp.com/api/user/login', {email, password}, config)  
+        const { data } = await axios.post(`${remote_config.BACKEND_URL}/api/user/login`, {email, password}, config)  
 
         dispatch({
             type: USER_LOGIN_SUCCESS, 
@@ -92,7 +94,7 @@ export const register = (name, email, password) => async(dispatch) => {
              }
          }
  
-         const { data } = await axios.get (`https://shopnow-backend-pro.herokuapp.com/api/user/${id}`,config)
+         const { data } = await axios.get (`${remote_config.BACKEND_URL}/api/user/${id}`,config)
  
          dispatch({
              type: USER_DETAILS_SUCCESS, 
@@ -120,7 +122,7 @@ export const register = (name, email, password) => async(dispatch) => {
                  Authorization : `Bearer ${userInfo.token}`
              }
          }
-         const { data } = await axios.put(`https://shopnow-backend-pro.herokuapp.com/api/user/profile`, user, config)
+         const { data } = await axios.put(`${remote_config.BACKEND_URL}/api/user/profile`, user, config)
          console.log(data)
          dispatch({
              type: USER_UPDATE_PROFILE_SUCCESS, 
@@ -151,7 +153,7 @@ export const register = (name, email, password) => async(dispatch) => {
         },
       }
   
-      const { data } = await axios.get(`https://shopnow-backend-pro.herokuapp.com/api/user`, config)
+      const { data } = await axios.get(`${remote_config.BACKEND_URL}/api/user`, config)
   
       dispatch({
         type: USER_LIST_SUCCESS,
@@ -189,7 +191,7 @@ export const register = (name, email, password) => async(dispatch) => {
         },
       }
   
-      const { data } = await axios.delete(`https://shopnow-backend-pro.herokuapp.com/api/user/${id}`, config)
+      const { data } = await axios.delete(`${remote_config.BACKEND_URL}/api/user/${id}`, config)
   
       dispatch({
         type: USER_DELETE_SUCCESS,

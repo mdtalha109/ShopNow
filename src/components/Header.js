@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { logout } from '../actions/userActions';
 import axios from 'axios';
+import { remote_config } from '../config/remoteURL';
 
 
 const Header = () => {
@@ -37,7 +38,7 @@ const Header = () => {
     const keywordHandler = async(event) => {
         setSearchKeyword(event.target.value)
         if(event.target.value.length > 1){
-            const {data} = await axios.get(`https://shopnow-backend-pro.herokuapp.com/api/products?keyword=${event.target.value}&price=`);
+            const {data} = await axios.get(`${remote_config.BACKEND_URL}/products?keyword=${event.target.value}&price=`);
             suggestionSet.add(data)
              setSuggestionList((item) => [...suggestionSet])
             console.log(suggestionList[0])

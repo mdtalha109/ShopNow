@@ -1,8 +1,10 @@
 import axios from 'axios'
+import { remote_config } from '../config/remoteURL'
 import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_SHIPPING_ADDRESS } from '../constants/cartConstants'
 
+
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-    const {data} = await axios.get(`https://shopnow-backend-pro.herokuapp.com/api/products/${id}`)
+    const {data} = await axios.get(`${remote_config.BACKEND_URL}/api/products/${id}`)
 
     dispatch({
         type: CART_ADD_ITEM,

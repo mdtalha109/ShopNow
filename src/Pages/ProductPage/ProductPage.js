@@ -13,6 +13,9 @@ import CategoriesProduct from '../../components/CategoriesProduct/CategoriesProd
 import Categories from '../../components/Categories/Categories';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ProductNotFound from '../../components/ProductNotFound/ProductNotFound.js'
+import { remote_config } from '../../config/remoteURL';
+
+
 
 const ProductPage = () => {
     const dispatch = useDispatch()
@@ -25,7 +28,7 @@ const ProductPage = () => {
 
      useEffect(async()=> {
         setLoading(true)
-        const {data} = await axios.get(`https://shopnow-backend-pro.herokuapp.com/api/products/category/${categoryName}?sort=${sort}`);
+        const {data} = await axios.get(`${remote_config.BACKEND_URL}/api/products/category/${categoryName}?sort=${sort}`);
         setProduct(data)
         setLoading(false)
     }, [dispatch, sort]);

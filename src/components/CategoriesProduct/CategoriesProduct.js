@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { remote_config } from '../../config/remoteURL';
+
 import Product from '../Product';
 import ProductSkeletonLoader from '../SkeletonLoader/productSkeletonLoader';
 
@@ -10,7 +12,7 @@ const CategoriesProduct = ({categoryName, Limit}) => {
 
    
         useEffect(async()=> {
-            const {data} = await axios.get(`https://shopnow-backend-pro.herokuapp.com/api/products/category/${categoryName}?Limit=${Limit}`);
+            const {data} = await axios.get(`${remote_config.BACKEND_URL}/api/products/category/${categoryName}?Limit=${Limit}`);
             setProduct(data)
             setLoading(false)
         }, []);
