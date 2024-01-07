@@ -1,16 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 
-import Rating from './Rating';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addToCart } from '../actions/cartActions';
-import Card from "./Card/Card";
+
 
 const Product = ({ product, isLoading }) => {
 
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const [btnText, setBtnText] = useState("Add to cart");
@@ -20,8 +18,7 @@ const Product = ({ product, isLoading }) => {
     const addToCartHandler = () => {
         if (product.countInStock > 0) {
             dispatch(addToCart(product._id, 1));
-            console.log('toast')
-            // toast.success(`${product.name} added to your cart`);
+            toast.success(`${product.name} added to your cart`);
             setBtnText("Go to cart");
         } else {
             toast.warn('Out of Stock');
@@ -53,8 +50,13 @@ const Product = ({ product, isLoading }) => {
         };
     }, []);
 
+    // const [added, setAdded] = useState(false)
+
     return (
         <div className="cards" id={product.countInStock === 0 ? 'out-of-stock-card' : ''} style={{width: "20%"}}>
+            {/* <div style={{position: "absolute", right: 10, top: 10, fontSize: 16}}>
+                    <i class={added ? "fa-solid fa-heart" : "fa-regular fa-heart"} style={{color: "red"}} onClick={() =>setAdded((prev) => !prev) }></i>
+            </div> */}
             {product.countInStock === 0 ? <div className="out-of-stock">out of stock</div> : ''}
             <Link to={`/product/${product._id}?category=${product.category}`}>
                 <div className="card-image" ref={imageRef}>
