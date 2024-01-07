@@ -28,7 +28,7 @@ const CategoriesProduct = ({categoryName, Limit, heading, style}) => {
   return (
       <>
       <div style={CategoriesProductStyle}>
-      <h2>{heading}</h2>
+      <h2 className='categories-title'>{heading}</h2>
       
         {<div className="container-product_card">
             {loading ? <div style={{width:"100%", display: "flex", justifyContent:"center"}}><ProductSkeletonLoader/></div> : ""}
@@ -37,8 +37,7 @@ const CategoriesProduct = ({categoryName, Limit, heading, style}) => {
             </div>  
         }
         </div>
-      
-      
+    
       </>
   )
 }

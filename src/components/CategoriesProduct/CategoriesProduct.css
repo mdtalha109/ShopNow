@@ -7,6 +7,10 @@
     scroll-snap-type: initial;
 }
 
+.categories-title{
+    margin-left: 10px;
+}
+
 
 @media screen and (max-width:800px)  {
     .container-product_card{
