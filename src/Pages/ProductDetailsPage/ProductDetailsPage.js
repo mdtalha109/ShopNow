@@ -74,8 +74,15 @@ const ProductScreen = ({match}) => {
                                 </div>
                                 
                                 <div className={styles.product_detail_info}>
-                                    <div> <h3 className={styles.product_detail_name}>{productDetail.name}</h3> </div>
-                                    <div className={styles.product_detail_price}>Price: ${productDetail.price}</div>
+                                    <div> <h3 className={styles.product_detail_name}><b></b>{productDetail.name}</h3> </div>
+                                    <div> 
+                                        <span className={styles.product_detail_price}> Price: ${productDetail.price}</span>
+                                        <p style={{fontSize: "0.8rem"}}>Inclusive of taxes
+
+                                        </p>
+                                    </div>
+                                    
+                                    
         
                                     <h3 className={styles.product_rating}> <Rating value={productDetail.rating} text={`${productDetail.numReviews} reviews`}/></h3>
         
@@ -96,6 +103,7 @@ const ProductScreen = ({match}) => {
                                                 disabled={productDetail.countInStock===0}
                                                 onClick={addToCartHandler}                
                                         >
+                                            <i className='fas fa-shopping-cart'></i>
                                             Add to Cart
                                         </button>
                                         
@@ -109,7 +117,7 @@ const ProductScreen = ({match}) => {
             }
              
             
-                <div className="container-product_card">
+                <div className={styles.container_product_card}>
              
                 <CategoriesProduct categoryName={product_category} Limit='6' heading="Related Products"/>
                 </div>
