@@ -31,8 +31,8 @@ const OrderPage = ({ history }) => {
  
   return (
     <>
-    <div style={{display:"flex"}}>
-    <Sidebar/>
+    
+   
      
       {0 ? (
         <div style={{position:"relative", left:"22%"}}>
@@ -40,7 +40,7 @@ const OrderPage = ({ history }) => {
 
         </div>
       ) : (
-        <TableContainer component={Paper} style={{width: "80%",marginLeft:"20%"}}>
+        <TableContainer component={Paper} style={{width: "80%"}}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -56,6 +56,8 @@ const OrderPage = ({ history }) => {
             <TableRow
               key={order._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              style={{cursor:"pointer"}}
+              onClick={()=> navigate(`../order/${order._id}`)}
             >
               <TableCell component="th" scope="row">
                 {order._id}
@@ -63,28 +65,13 @@ const OrderPage = ({ history }) => {
               <TableCell align="center">{order.user.name}</TableCell>
               <TableCell align="center">{order.totalPrice}</TableCell>
               <TableCell align="center">{order.total}</TableCell>
-              {/* <TableCell align="center">{user.isAdmin ? "YES" : "NO"}</TableCell> */}
-              {/* <TableCell>
-                  <Link to={`/admin/user/${user._id}/edit`}>
-                    <Button variant='light' className='btn-sm'>
-                      <i className='fas fa-edit'></i>
-                    </Button>
-                  </Link>
-                  <span
-                    variant='danger'
-                    className='btn-sm'
-                    onClick={() => deleteHandler(user._id)}
-                  >
-                    <i className='fas fa-trash'></i>
-                  </span>
-                </TableCell>*/}
             </TableRow> 
           ))}
         </TableBody>
       </Table>
     </TableContainer>
       )}
-      </div>
+     
       
     </>
   )
