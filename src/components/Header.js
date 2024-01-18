@@ -51,18 +51,26 @@ const Header = () => {
         navigate(`/search?q=${searchKeyword}`)
     }
 
+    const isAdmin = useSelector(state => state.userLogin?.userInfo?.isAdmin);
+
+
 
     return (
         <nav>
             <div className='logo'>
                 <Link to='/' style={{color:"white"}}>ShopNow</Link> 
             </div>
-            <div className='nav-form'>
-            <form  method='GET' style={{display: 'flex'}}>
-                <input value={searchKeyword} onChange={keywordHandler}   type="text" id="input-search"  placeholder="Search..."/>
-                <button onClick={searchHandler} style={{color: "black", outline:"none", border:"none", padding:"0 10px"}}><i className='fas fa-search'></i></button>
-            </form>
-            </div>
+
+            {
+                !isAdmin &&  
+                <div className='nav-form'>
+                    <form  method='GET' style={{display: 'flex'}}>
+                        <input value={searchKeyword} onChange={keywordHandler}   type="text" id="input-search"  placeholder="Search..."/>
+                        <button onClick={searchHandler} style={{color: "black", outline:"none", border:"none", padding:"0 10px"}}><i className='fas fa-search'></i></button>
+                    </form>
+                </div>
+            }
+           
             <div className='navlink'>
                 <Link to='/cart'> <i className='fas fa-shopping-cart'></i> <span>Cart {cartItems.length}</span></Link>
                 {
@@ -74,7 +82,7 @@ const Header = () => {
         
                         <Dropdown.Menu>
                             <Dropdown.Item class><Link to='/profile'> Profile  </Link></Dropdown.Item>
-                            <Dropdown.Item onClick={logoutHandler}>Logout action</Dropdown.Item>
+                            <Dropdown.Item onClick={logoutHandler}>Logout</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                     
