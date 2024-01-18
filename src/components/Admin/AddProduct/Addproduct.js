@@ -1,80 +1,91 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { createProduct } from '../../../actions/productAction';
+import Input from '../../ui/Input';
+import Textarea from '../../ui/Textarea';
+import { toast } from 'react-toastify';
+import useAddProduct from './hooks/useAddProduct';
 
-const Addproduct = () => {
+const Addproduct = ({setisOpen}) => {
 
-    const [productName, setProductName] = useState('')
-    const [productCategory, setProductCategory] = useState('')
-    const [productImage, setProductImage] = useState('')
-    const [productBrand, setProductBrand] = useState('')
-    const [productPrice, setProductPrice] = useState('')
-    const [productDescription, setProductDescription] = useState('')
-    const [countInStock, setCountInStock] = useState('')
-
-
-
-    const dispatch = useDispatch();
-
-    const addProductHandler = async() => {
-        dispatch(createProduct(productName, productCategory, productImage,productBrand,productPrice, productDescription,countInStock));
-        alert("Product Created!!!")
-       
-      }
-
-
-    const ImageHanlder = (pic) => {
-        if(pic === undefined){
-            alert('Image not uploaded')
-            return
-        }
-
-        
-        if(pic.type  === "Image/jpeg" || "Image/png" ||"Image/webp"  ){
-            const data = new FormData()
-            data.append("file", pic)
-            data.append("upload_preset", "shopNow")
-            data.append("cloud_name", "talhapro321")
-            fetch("https://api.cloudinary.com/v1_1/talhapro321/image/upload", {
-                method: "POST",
-                body: data
-            }).then((res) => res.json())
-              .then(data => {
-                console.log(data)
-                setProductImage(data.url.toString())
-                console.log(data)
-                
-              })
-              .catch((err) => {
-                  console.log(err)
-                  
-              })
-        } else{
-            alert('something went wrong')
-        }
-    }
+  const {
+    product, 
+    setProduct,
+    addProductHandler,
+    ImageHanlder
+  } = useAddProduct()
 
   return (
-    <div class="form">
-    <h1>Add Product</h1>
-    <div style={{display: "flex"}}>
-      <input type="text" placeholder="Product Name" style={{marginRight: "10px"}} onChange={(e) => setProductName(e.target.value)}/>
-      <input type="text" placeholder="Category" onChange={(e) => setProductCategory(e.target.value)}/>
-    </div>
-    <input type="file" placeholder="" onChange={(e) => ImageHanlder(e.target.files[0])}/>
-   
-    <div style={{display: "flex"}}>
-      <input type="text" placeholder="Brand" style={{marginRight: "10px"}} onChange={(e) => setProductBrand(e.target.value)}/>
-      <input type="text" placeholder="Price" onChange={(e) => setProductPrice(e.target.value)}/>
-    </div>
+    <div class="form" style={{display: "flex", flexDirection: "column", gap: "10px"}}>
 
-    <input type="textarea" placeholder="Product Description" onChange={(e) => setProductDescription(e.target.value)}/>
-    <input type="textarea" placeholder="Count In Stock" onChange={(e) => setCountInStock(e.target.value)}/>
+      <h1>Add Product</h1>
 
-    <button onClick={addProductHandler}>Submit</button>
+      <div style={{display: "flex"}}>
+        <Input 
+          label='Product Name' 
+          type="text" 
+          name="name"
+          placeholder="Product Name" 
+          style={{marginRight: "10px"}} 
+          onChange={(event) => setProduct((prev) => ({...prev, [event.target.name]: event.target.value}))}
+        />
+        <Input
+          label='Category'
+          type="text" 
+          name="category"
+          placeholder="Category" 
+          onChange={(event) => setProduct((prev) => ({...prev, [event.target.name]: event.target.value}))}
+        />
+      </div>
+
+      <Input 
+        label='Image'
+        name="image"
+        type="file" 
+        placeholder="" 
+        onChange={(event) => setProduct((prev) => ({...prev, [event.target.name]: event.target.value}))}
+      />
+    
+      <div style={{display: "flex"}}>
+
+        <Input 
+          label='Brand Name'
+          type="text" 
+          name="brand"
+          placeholder="Brand" 
+          style={{marginRight: "10px"}} 
+          onChange={(event) => setProduct((prev) => ({...prev, [event.target.name]: event.target.value}))}
+        />
+
+        <Input
+          label='Price'
+          type="number" 
+          name="price"
+          placeholder="Price" 
+          onChange={(event) => setProduct((prev) => ({...prev, [event.target.name]: event.target.value}))}
+        />
+      </div>
+
+      <Textarea
+        label="Product Description"
+        type="text"
+        name="description" 
+        placeholder="Product Description" 
+        onChange={(event) => setProduct((prev) => ({...prev, [event.target.name]: event.target.value}))}
+      />
+
+      <Input
+        label="Stock" 
+        type="number" 
+        name="countInStock"
+        placeholder="Count In Stock" 
+        onChange={(event) => setProduct((prev) => ({...prev, [event.target.name]: event.target.value}))}
+      />
+
+      <button onClick={addProductHandler}>Submit</button>
+    
   
-  
-</div>
+    </div>
   )
 }
 
