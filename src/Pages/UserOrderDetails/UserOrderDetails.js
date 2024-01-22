@@ -1,10 +1,13 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap"
 import { useParams } from "react-router-dom";
+import ReactToPrint from "react-to-print";
 import Card from "../../components/Card/Card";
 import { remote_config } from "../../config/remoteURL";
 import './userOrderDetails.css'
+
+
 
 const UserOrderDetails = () => {
 
@@ -12,29 +15,41 @@ const UserOrderDetails = () => {
     const [OrderDetails, setOrderDetails] = useState();
 
     useEffect(async () => {
-        const { data } = await axios.post(`${remote_config.BACKEND_URL}/api/orders/getOrderDetail`, { order_id: id })
-
+        const { data } = await axios.post(`${remote_config.BACKEND_URL}/api/orders/get-order-detail`, { order_id: id })
         setOrderDetails(data)
     }, [])
+
+    const ref = useRef();
 
 
 
     return (
-        <Container className="orderDetails_container">
+        <>
+        <Container className="orderDetails_container" ref= {ref}>
             <h1>Order Details: #{id}</h1>
             <br/>
-            {OrderDetails &&
+            {OrderDetails && 
                 <div>
-                    <Card>
-                        <h3>Delivery Address:</h3>
-                        <div>{OrderDetails.shippingAddress.address}</div>
-                        <div>{OrderDetails.shippingAddress.city}</div>
-                        <div>{OrderDetails.shippingAddress.postalCode}</div>
-                        <div>{OrderDetails.shippingAddress.country}</div>
-                    </Card>
+                    <Card style={{ fontSize:"1.2rem" }}>
+                        <div >
+                        <h3>Cusotmer Details:</h3>
+                        <div>Name: {OrderDetails.shippingAddress.address}</div>
+                        <div>Email Id: {OrderDetails.shippingAddress.city}</div>
+                        </div>
 
+                        <hr/>
 
-                    <Card>
+                        <div className="orderDetails_container-address_details">
+                        <h3>Shipping Address:</h3>
+                        <div>Address: {OrderDetails.shippingAddress.address}</div>
+                        <div>City: {OrderDetails.shippingAddress.city}</div>
+                        <div>Postal Code: {OrderDetails.shippingAddress.postalCode}</div>
+                        <div>Country: {OrderDetails.shippingAddress.country}</div>
+                        </div>
+                    
+                        <hr/>
+
+                    
                         <div>
                             <table>
                                 <thead>
@@ -65,14 +80,26 @@ const UserOrderDetails = () => {
                                 
                             </table>
                         </div>
-                    </Card>
-                </div>
+                    </Card> 
+                </div> 
             }
-
-
-
         </Container>
 
+        {
+            OrderDetails &&  
+                <Container className="mt-4">
+                    <ReactToPrint
+                        bodyClass="print-agreement"
+                        content={() => ref.current}
+                        trigger={() => (
+                            <button className="download_button">Download Reciept</button>
+                         )}
+                    />
+
+
+                </Container>
+        }
+        </>
     )
 }
 
