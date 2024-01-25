@@ -34,7 +34,7 @@ const App =() => {
           <Routes>
             <Route path='/*' element={<Layout/>}>
               <Route exact path="" element={<HomeScreen/>}> </Route>
-              <Route exact path="login" element={<LoginScreen/>}> </Route>
+              <Route exact path="login" element={<Suspense fallback={<div>Loading...</div>}><LoginScreen/></Suspense>}> </Route>
               <Route exact path="product/:id" element={<Suspense fallback={<div>Loading...</div>}><ProductScreen/></Suspense>}> </Route>
               <Route exact path="product/category/:category" element={<Suspense fallback={<div>Loading...</div>}><ProductPage/></Suspense>}> </Route>
               <Route path="search" element={<SeachPage/>}> </Route>
@@ -48,7 +48,7 @@ const App =() => {
               <Route exact path="profile" element={<Suspense fallback={<div>Loading...</div>}><ProfileScreen/></Suspense>}> </Route>
             </Route>
             <Route path='/admin/*' element={<AdminLayout/>}>
-              <Route exact path="userlist" element={<Suspense fallback={<div>Loading...</div>}><UserListPage/></Suspense>}/>
+              <Route exact path="users" element={<Suspense fallback={<div>Loading...</div>}><UserListPage/></Suspense>}/>
               <Route exact path="products" element={<Suspense fallback={<div>Loading...</div>}><ProductListPage/></Suspense>}/>
               <Route exact path="orders" element={<Suspense fallback={<div>Loading...</div>}><OrderPage/></Suspense>}/>
               <Route exact path="order/:order_id" element={<Suspense fallback={<div>Loading...</div>}><OrderDetail/></Suspense>}/>
