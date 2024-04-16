@@ -1,0 +1,37 @@
+
+
+.orderDetails_container{
+    margin-top: 100px;
+    color: black;
+}
+
+table{
+    width: 100%;
+}
+
+tr:hover {
+    background-color: beige;  
+}
+
+td, th{
+    padding: 5px 0;
+}
+
+td:nth-child(1){
+    width: 80%;
+}
+
+td:nth-child(2){  
+    width: 10%;
+}
+
+.total_details td{
+    background-color: red;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.download_button{
+    padding: 2px;
+    border: none;
+}

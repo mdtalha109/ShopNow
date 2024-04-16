@@ -1,0 +1,156 @@
+
+
+.cart-list{
+   overflow: scroll;
+   max-height: 70vh;
+}
+
+.product-name{
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.cart-item-img{
+    width: 10rem;
+}
+
+
+.qty-counter-container-1{
+    margin: 0 !important;
+    padding: 0 !important;
+    color: black;
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    box-shadow: none !important;
+
+}
+.qty-counter-1{
+    margin-right: 10px;
+    padding: 0 !important;
+}
+
+
+
+
+.qty-counter-1 button{
+    color: black;
+    background-color: white;
+    font-weight: 900; 
+    font-size: 15px;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    padding-top: 1px;
+    line-height: 1;
+    border: 1px solid #c2c2c2;
+   padding: 0 !important;
+}
+
+.remove-btn, .remove-btn:hover{
+    padding: 5px 10px !important;
+    margin: 0 !important;
+    background: transparent;
+    color: black !important;
+    /* border: 2px solid black; */
+    outline: 2px solid #0070f3;
+    border-radius: 20px;
+    
+}
+
+.remove-btn:hover{
+    background-color: #0070f3;
+    color: white !important;
+}
+
+
+.qty-rmv{
+    display: flex;
+}
+
+.cart-summary-item{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+
+
+}
+
+.cart-item:hover{
+    background-color: #f5f3f3;
+    transition-duration: 0.5s;
+}
+
+@media screen and (max-width:800px)  {
+    .cart-item img{
+        width: 100px;
+    }
+   /* .abc{
+       display: flex;
+       align-items: center;
+       text-align: center;
+   } */
+
+   .cart-item{
+       position: relative;
+       padding: 5px 5px !important;
+  
+   }
+
+   
+
+   .cart-item-img{
+      
+       position: absolute;
+       left: 0;
+       width: 130px !important;
+   }
+
+   .product-name{
+    max-width: 80% !important;
+    display: block;
+   }
+
+   .cart-item-des{
+      
+       left: 135px;
+       position: relative;
+       
+       width: 70%;
+   }
+
+
+
+   .remove-btn{
+       width: fit-content;
+
+       
+   }
+   .qty-counter-container-1 {
+        margin-left: 10px !important;
+
+   }
+
+   .qty-rmv{
+       display: flex;
+       /* flex-direction: row; */
+       /* align-items: center; */
+       /* width: fit-content; */
+       position: relative;
+       left: -30px;
+   }
+
+   .total-price-detail-container{
+       margin-top: 10px !important;
+   }
+     
+
+
+
+    
+}
+
+
+button > a{
+    color: white;
+}
