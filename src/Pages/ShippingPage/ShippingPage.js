@@ -1,21 +1,17 @@
 
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Form, Button, Row, Col } from 'react-bootstrap'
-import CheckoutSteps from '../../components/checkoutSteps/checkoutSteps.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast, ToastContainer } from "react-toastify"
 import { saveShippingAddress } from '../../actions/cartActions'
 import { createOrder } from '../../actions/orderActions.js'
 
 
-
-import Card from '../../components/Card/Card.js'
 import Modal from '../../components/Modal/Modal.js'
 import Input from '../../components/ui/Input'
 
 import styles from './index.module.css'
-import './ShippingPage.css'
+//import './ShippingPage.css'
 
 const ShippingScreen = ({ history }) => {
 
@@ -26,7 +22,6 @@ const ShippingScreen = ({ history }) => {
     const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
     const [country, setCountry] = useState(shippingAddress.country)
     const [orderDispatched, setOrderDistpatched] = useState(false)
-    const [processingPayment, setProcessingPayment] = useState(false);
     const dispatch = useDispatch()
 
 
@@ -54,29 +49,22 @@ const ShippingScreen = ({ history }) => {
 
     let intervalId = null
 
-    const placeOrderHandler = () => {
-        dispatch(createOrder({
+    const placeOrderHandler = async () => {
+        let order = await dispatch(createOrder({
             orderItems: cart.cartItems,
-            shippingAddress: cart.shippingAddress,
+            shippingAddress: { address, city, postalCode, country },
             itemsPrice: cart.itemsPrice,
             shippingPrice: cart.shippingPrice,
             taxPrice: cart.taxPrice,
             totalPrice: cart.cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2),
         }))
 
-        setOrderDistpatched(true)
+        console.log("order: ", order)
 
-        const { loading: orderLoading, error: orderError, order } = orderCreate;
-
-        intervalId = setInterval(() => {
-            console.log("order: ", order)
-            if (order && order._id) {
-                clearInterval(intervalId)
-                console.log('Order ID:', order._id);
-                navigate(`/order/${order._id}`)
-            }
-        }, 500)
-
+        if(order){
+            setOrderDistpatched(true)
+            navigate(`/order/${order._id}`)
+        }
     }
 
     const submitHandler = () => {
@@ -135,26 +123,6 @@ const ShippingScreen = ({ history }) => {
 
 
             </div>
-
-
-            <Modal open={isOpen} close={closeModal}>
-                <div className='LoginForm-container'>
-                    <div className='LoginForm'>
-                        <h3>Are you sure?</h3>
-
-                        <div className='input-container'>
-
-                        </div>
-                        <div className='input-container'>
-                            <button type='submit' onClick={placeOrderHandler}> Continue </button>
-                        </div>
-                    </div>
-                    <ToastContainer />
-
-                </div>
-            </Modal>
-
-
         </>
     )
 }
