@@ -1,0 +1,40 @@
+/* index.module.css */
+.table {
+    width: 100%;
+    text-align: left;
+  }
+  
+  .tableHead {
+    border: 1px solid #d1d5db; /* This is an approximation for border-text-gray-400 */
+    background-color: white;
+  }
+  
+  .tableBody {
+    /* You can add styles here if needed */
+  }
+  
+  .tableColumn {
+    padding: 0.75rem 1.5rem; /* px-6 py-3 */
+    font-size: 0.875rem; /* text-sm */
+  }
+  
+  .tableRow {
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb; /* This is an approximation for border-gray-200 */
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  
+  .tableRow:hover {
+    background-color: #f3f4f6; /* hover:bg-gray-200 */
+  }
+  
+  .tableCell {
+    padding: 0.75rem 1.5rem; /* px-6 py-3 */
+  }
+  
+  .tableLoadingCell {
+    padding: 0.75rem 0.75rem; /* px-3 py-1 */
+    height: 2.25rem; /* h-9 */
+  }
+  

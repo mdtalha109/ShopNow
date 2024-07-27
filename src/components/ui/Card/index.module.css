@@ -1,0 +1,48 @@
+
+.card {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color, #e5e7eb);
+    display: flex;
+    flex-direction: column;
+}
+
+.card_header {
+    display: flex;
+    padding: 16px;
+    border-bottom: 1px solid black;
+}
+
+.card_title {
+    white-space: nowrap;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.025em;
+}
+
+.car_title {
+    font-size: 1.25rem;
+}
+
+.card_subtitle {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+
+.card_description {
+    font-size: 0.875rem;
+    color: var(--muted-foreground-color, #6b7280);
+}
+
+.card_content {
+    padding: 16px;
+   
+}
+
+.card_footer {
+    
+}
