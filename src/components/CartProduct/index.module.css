@@ -1,0 +1,63 @@
+.qty_counter_container{
+    margin: 0 !important;
+    padding: 0 !important;
+    color: black;
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    box-shadow: none !important;
+}
+
+.cart_item:hover{
+    background-color: #f5f3f3;
+    transition-duration: 0.5s;
+}
+
+.qty_counter{
+    margin-right: 10px;
+    padding: 0 !important;
+}
+
+
+
+
+.qty_counter_button{
+    color: black;
+    background-color: white;
+    font-weight: 900; 
+    font-size: 15px;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    padding-top: 1px;
+    line-height: 1;
+    border: 1px solid #c2c2c2;
+   padding: 0 !important;
+}
+
+.remove_btn, .remove_btn:hover{
+    padding: 5px 10px !important;
+    margin: 0 !important;
+    background: transparent;
+    color: black !important;
+    /* border: 2px solid black; */
+    outline: 2px solid #0070f3;
+    border-radius: 20px;
+    
+}
+
+.remove_btn:hover{
+    background-color: #0070f3;
+    color: white !important;
+}
+
+.qty_rmv{
+    display: flex;
+    gap: 2px;
+}
+
+@media screen and (max-width:800px)  {
+   
+
+ 
+}
