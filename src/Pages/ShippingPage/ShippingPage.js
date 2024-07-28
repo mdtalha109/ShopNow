@@ -1,21 +1,17 @@
 
 import React, { useState, useEffect } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { toast, ToastContainer } from "react-toastify"
+import axios from 'axios'
 import { saveShippingAddress } from '../../actions/cartActions'
 import { createOrder } from '../../actions/orderActions.js'
-
-
-import Modal from '../../components/Modal/Modal.js'
 import Input from '../../components/ui/Input'
+import { remote_config } from '../../config/remoteURL'
 
 import styles from './index.module.css'
-import axios from 'axios'
-import { remote_config } from '../../config/remoteURL'
-//import './ShippingPage.css'
 
-const ShippingScreen = ({ history }) => {
+
+const ShippingScreen = () => {
 
     const cart = useSelector(state => state.cart)
     const { shippingAddress } = cart
@@ -23,7 +19,6 @@ const ShippingScreen = ({ history }) => {
     const [city, setCity] = useState(shippingAddress.city)
     const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
     const [country, setCountry] = useState(shippingAddress.country)
-    const [orderDispatched, setOrderDistpatched] = useState(false)
     const dispatch = useDispatch()
 
 
@@ -41,15 +36,7 @@ const ShippingScreen = ({ history }) => {
 
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
 
-
-
-    const closeModal = () => {
-        setisOpen(false)
-    }
-
     const orderCreate = useSelector((state) => state.orderCreate);
-
-    let intervalId = null
 
     const userLogin = useSelector(state => state.userLogin)
 
@@ -72,8 +59,7 @@ const ShippingScreen = ({ history }) => {
           order_id: order.id,
           handler: async (response) => {
             const { data } = await axios.post(`${remote_config.BACKEND_URL}/api/orders/verify-order-payment`, response, config);
-             localStorage.removeItem('cartItems')
-              setOrderDistpatched(true)
+            localStorage.removeItem('cartItems')
             navigate(`/order/${data.data._id}`)
            
           },
@@ -100,8 +86,6 @@ const ShippingScreen = ({ history }) => {
         console.log("order: ", order)
 
         if(order){
-          
-
             openRazorpayCheckout(order);
         }
 
