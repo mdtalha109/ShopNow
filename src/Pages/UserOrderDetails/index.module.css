@@ -1,3 +1,9 @@
 .order_details_container{
     margin-top: 7%;
 }
+
+.download_reciept_container{
+    margin-top: 16px;
+    display: flex;
+    justify-content: end;
+}

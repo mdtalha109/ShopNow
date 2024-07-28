@@ -91,12 +91,12 @@ const UserOrderDetails = () => {
 
             {
                 OrderDetails &&
-                <Container className="mt-4">
+                <Container className={styles.download_reciept_container}>
                     <ReactToPrint
                         bodyClass="print-agreement"
                         content={() => ref.current}
                         trigger={() => (
-                            <Button className="download_button">Download Reciept</Button>
+                            <Button>Download Reciept</Button>
                         )}
                     />
                 </Container>
