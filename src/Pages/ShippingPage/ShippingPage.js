@@ -11,6 +11,8 @@ import Modal from '../../components/Modal/Modal.js'
 import Input from '../../components/ui/Input'
 
 import styles from './index.module.css'
+import axios from 'axios'
+import { remote_config } from '../../config/remoteURL'
 //import './ShippingPage.css'
 
 const ShippingScreen = ({ history }) => {
@@ -49,6 +51,42 @@ const ShippingScreen = ({ history }) => {
 
     let intervalId = null
 
+    const userLogin = useSelector(state => state.userLogin)
+
+    const {  userInfo } = userLogin
+  
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+
+    const openRazorpayCheckout = (order) => {
+        const options = {
+          key: 'rzp_test_KIS4vAphUl5PrB',
+          amount: order.amount,
+          currency: order.currency,
+          name: 'ShopNow',
+          description: 'Order Transaction',
+          order_id: order.id,
+          handler: async (response) => {
+            const { data } = await axios.post(`${remote_config.BACKEND_URL}/api/orders/verify-order-payment`, response, config);
+             localStorage.removeItem('cartItems')
+              setOrderDistpatched(true)
+            navigate(`/order/${data.data._id}`)
+           
+          },
+          prefill: {
+            name: userInfo.name,
+            email: userInfo.email
+          },
+        };
+    
+        const rzp1 = new window.Razorpay(options);
+        rzp1.open();
+      };
+
     const placeOrderHandler = async () => {
         let order = await dispatch(createOrder({
             orderItems: cart.cartItems,
@@ -62,9 +100,11 @@ const ShippingScreen = ({ history }) => {
         console.log("order: ", order)
 
         if(order){
-            setOrderDistpatched(true)
-            navigate(`/order/${order._id}`)
+          
+
+            openRazorpayCheckout(order);
         }
+
     }
 
     const submitHandler = () => {
@@ -72,9 +112,7 @@ const ShippingScreen = ({ history }) => {
         placeOrderHandler()
     }
 
-    const userLogin = useSelector(state => state.userLogin)
-
-    const { loading, error, userInfo } = userLogin
+    
 
     useEffect(() => {
         if (!userInfo)

@@ -32,7 +32,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
         type: CART_CLEAR_ITEMS,
         // payload: data,
       })
-      localStorage.removeItem('cartItems')
+     
       return data
     } catch (error) {
       const message =
@@ -66,7 +66,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
         },
       }
   
-      const { data } = await axios.get(`http://localhost:2000/api/orders`, config)
+      const { data } = await axios.get(`${remote_config.BACKEND_URL}/api/orders`, config)
   
       dispatch({
         type: ORDER_LIST_SUCCESS,
