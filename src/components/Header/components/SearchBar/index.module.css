@@ -1,0 +1,10 @@
+.search_bar_form{
+    display: flex;
+}
+
+.search_btn{
+    color: black;
+    outline: none;
+    border: none; 
+    padding: 0 10px;
+}

@@ -48,20 +48,11 @@ nav form input{
 
 
 
-.navlink{
-  padding: 3px 10px;
-  display: flex;
-  align-items: center;
-  color: white;
-  justify-content: center;
-}
 
 
 
-.navlink>a{
-  padding: 0 20px;
-  color: white;
-}
+
+
 
 nav span{
   color: white;
@@ -130,21 +121,14 @@ nav>form>input{
 
 
 .card-image{
-  /* overflow: hidden; */
   margin: 10px;
-  /* padding: 10px; */
-
- 
-
 }
 
 .card-image > img{
   max-width: 100%;
   max-height: 100px;
-  /* min-height: 130px; */
-  
-  
-  /* background-color: red; */
+  aspect-ratio: 3/2;
+  object-fit: contain;
 }
 
 
@@ -202,12 +186,6 @@ nav>form>input{
 .container-product_card{
   display: flex;
   flex-direction: row;
-  /* justify-content:space-between; */
-  /* width: 100vw; */
-  /* padding: 10px 0; */
-  /* margin: 0 0 10px 0; */
-  /* flex-wrap: wrap; */
-  /* background-color: #4CAF50; */
   overflow: scroll;
   margin: 15px 0;
  
@@ -221,11 +199,6 @@ nav>form>input{
   margin-top: 60px;
   min-height: 90vh;
  }
-
-/* .navlink >.fas{
-  color: white;
-} */
-
 
  @media screen and (max-width:800px)  {
 
@@ -274,13 +247,7 @@ nav>form>input{
     width: 80vw;
   }
 
-  .navlink>a{
-    padding: 0 7px;
-  }
 
-  nav > .navlink span{
-   display: none;
-  }
 
   .body-container{
     margin: 10px 10px 10px 10px !important ;
@@ -473,7 +440,7 @@ background-color: transparent;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form input {
+/* .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
@@ -483,7 +450,7 @@ background-color: transparent;
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
-}
+} */
 .form button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
