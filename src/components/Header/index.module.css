@@ -1,3 +1,48 @@
+nav {
+    background-color: #0070f3;
+    color: rgb(0, 0, 0) !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, .2);
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+}
+
+nav form {
+    width: 40vw;
+}
+
+nav form input {
+    width: 80%;
+    outline: none;
+    padding: 5px;
+    border: none;
+}
+
+
+nav span {
+    color: white;
+}
+
+nav>form>input {
+    width: 60vw;
+}
+
+
+.nav-dropdown:hover~.nav-dropdown-content {
+    display: block;
+
+}
+
+.nav-dropdown-content:hover {
+    display: block;
+
+}
+
 .nav_link {
     padding: 3px 10px;
     display: flex;
@@ -21,5 +66,37 @@
     nav>.nav_link span {
         display: none;
     }
-}
 
+    .nav-dropdown-content {
+        display: none;
+        position: absolute;
+        overflow: auto;
+        right: 0;
+        top: 10%;
+        background-color: black;
+    }
+
+
+    .nav-dropdown-content:hover~a {
+        display: block;
+    }
+
+    nav {
+        background-color: #0070f3;
+        z-index: 990;
+    }
+
+    nav form {
+        top: 45px;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        justify-content: center;
+        background-color: #0070f3;
+        padding: 0 0 10px 0;
+    }
+
+    nav input {
+        width: 80vw;
+    }
+}

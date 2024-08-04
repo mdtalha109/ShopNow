@@ -21,7 +21,7 @@ const HomeScreen = () => {
                 </div>
 
 
-                <div style={{padding: "0px 0px"}}>
+                <div style={{display: "flex", flexDirection: "column", gap: "30px"}}>
                     <CategoriesProduct categoryName='Electronics' Limit='6' heading="Electronics"/>
                     <CategoriesProduct categoryName='Footwear' Limit='6' heading="Footwear"/>
                 </div>

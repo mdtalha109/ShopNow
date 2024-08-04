@@ -1,14 +1,14 @@
 import React from 'react'
-import { Col, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Card from '../ui/Card'
 import Table from '../ui/Table'
 import Button from '../ui/Button'
 
+import styles from './index.module.css'
 
 const CartSummary = ({ cartItems }) => {
     return (
-        <Col md={4} >
+        <div className={styles.cart_summary}>
             <Card>
                 <Card.Header>
                     Price Summary
@@ -27,16 +27,12 @@ const CartSummary = ({ cartItems }) => {
                         </Table.Row>
 
                     </Table>
-                    <Button>
-                        <Link to='/shipping'>PLACE ORDER</Link>
+                    <Button isFullWidth={true}>
+                        <Link to='/shipping'><span className={styles.order_btn}>Place Order</span></Link>
                     </Button>
-
                 </Card.Content>
-
-
-
             </Card>
-        </Col>
+            </div>
     )
 }
 

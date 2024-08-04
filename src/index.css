@@ -15,36 +15,19 @@ body{
 
 
 
-nav{
-  /* background-color: rgb(13, 108, 172); */
-  background-color: #0070f3;
-  color: rgb(0, 0, 0) !important;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  box-shadow: 1px 1px 1px 2px rgba(0,0,0,.2); 
-  padding: 10px 0;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 999;
-}
 
 
-.cards a{
-  text-decoration: none;
-}
 
-nav form{
-  width: 40vw;
-}
 
-nav form input{
-  width: 80%;
-  outline: none;
-  padding: 5px;
-  border: none;
-}
+
+
+
+
+
+
+
+/* card  */
+
 
 
 
@@ -54,82 +37,6 @@ nav form input{
 
 
 
-nav span{
-  color: white;
-}
-
-nav>form>input{
-  width: 60vw;
-}
-
-
-
-.nav-dropdown:hover ~ .nav-dropdown-content{
-  display: block;
- 
-}
-
-.nav-dropdown-content:hover{
-  display: block;
-  
-}
-
-.product-card-btn{
-  /* background-color: rgb(34, 34, 46); */
-  background-color: #0070f3;
-  color: white;
-  width: 90%;
-  padding: 5px 5px;
-  margin: 5px 5px;
-  border-radius: 10px;
-  position: relative;
-  bottom: 0;
- border: 0;
-}
-
-
-
-
-
-/* card  */
-
-.cards{
-  margin: 5px;
-  /* height: min-content; */
-  max-width: 15%;
-  /* padding: 10px; */
-  position: relative;
-  margin: 10px 13px !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
- /* flex: 1; */
-  border-radius: 6%;
-  /* overflow: hidden; */
-  text-align: center;
-  box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
-  background-color: white;
-
-}
-
-
-
-
-
-
-
-
-.card-image{
-  margin: 10px;
-}
-
-.card-image > img{
-  max-width: 100%;
-  max-height: 100px;
-  aspect-ratio: 3/2;
-  object-fit: contain;
-}
 
 
 
@@ -187,7 +94,9 @@ nav>form>input{
   display: flex;
   flex-direction: row;
   overflow: scroll;
-  margin: 15px 0;
+  margin: 15px 0; 
+
+ 
  
 }
 
@@ -209,19 +118,7 @@ nav>form>input{
   .main-container{
    margin-top: 80px !important;
   }
-  .nav-dropdown-content{
-    display: none;
-    position: absolute;
-    overflow: auto;
-    right: 0;
-    top: 10%;
-    background-color: black;
-  }
  
-
-  .nav-dropdown-content:hover ~ a{
-     display: block;
-   }
 
 
 
@@ -229,23 +126,7 @@ nav>form>input{
     padding-left: 10px;
   }
 
-  nav{
-    background-color: #0070f3;
-    z-index: 990;
-  }
-  nav form{
-    top: 45px;
-    position:absolute;
-    left: 0;
-    width: 100%;
-    justify-content: center;
-    background-color: #0070f3;
-    padding: 0 0 10px 0;
-  }
-
-  nav input{
-    width: 80vw;
-  }
+ 
 
 
 
@@ -254,16 +135,9 @@ nav>form>input{
     
   }
 
-   .cards{
-      min-width: 40%;
-      /* height:fit-content */
-   }
-
-   .card-image > img{
-    max-width: 100%;
-    max-height: 150px;
    
-  }
+
+  
 
 
 
@@ -482,26 +356,7 @@ background-color: transparent;
 }
 
 
-.out-of-stock{
-  background-color: rgb(128, 13, 157);
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  height: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-weight: 900;
-  z-index: 9;
-}
 
-
-#out-of-stock-card{
-  opacity: 0.7;
-  /* line-break: loose; */
-
-}
 
 
 

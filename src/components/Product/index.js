@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
 
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../actions/cartActions';
+import { addToCart } from '../../actions/cartActions';
+import styles from './index.module.css'
+import 'react-toastify/dist/ReactToastify.css'
+
 
 
 const Product = ({ product, isLoading }) => {
@@ -50,31 +52,29 @@ const Product = ({ product, isLoading }) => {
         };
     }, []);
 
-    // const [added, setAdded] = useState(false)
-
     return (
-        <div className="cards" id={product.countInStock === 0 ? 'out-of-stock-card' : ''} style={{width: "20%"}}>
-            {/* <div style={{position: "absolute", right: 10, top: 10, fontSize: 16}}>
-                    <i class={added ? "fa-solid fa-heart" : "fa-regular fa-heart"} style={{color: "red"}} onClick={() =>setAdded((prev) => !prev) }></i>
-            </div> */}
-            {product.countInStock === 0 ? <div className="out-of-stock">out of stock</div> : ''}
+        <div className={styles.cards} id={product.countInStock === 0 ? 'out_of_stock_card' : ''} >
+            {product.countInStock === 0 ? <div className={styles.out_of_stock}>out of stock</div> : ''}
             <Link to={`/product/${product._id}?category=${product.category}`}>
-                <div className="card-image" ref={imageRef}>
+                <div className={styles.card_image} ref={imageRef}>
                     {imageInView && <img src={product.image} alt="" loading="lazy" />}
                 </div>
             </Link>
 
-            <div className="card-title">
-                <p>
-                    {product.name}
-                </p>
-            </div>
 
-            <div className="card-price">
+            <p className={styles.card_title}>
+                {product.name}
+            </p>
+
+
+            <div className={styles.card_price}>
                 Rs: {product.price}
             </div>
 
-            <button className="product-card-btn" onClick={addToCartHandler}>{btnText}</button>
+
+            <button className={styles.product_card_btn} onClick={addToCartHandler}>{btnText}</button>
+
+
         </div>
     )
 }

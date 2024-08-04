@@ -14,6 +14,7 @@ import Categories from '../../components/Categories/Categories';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ProductNotFound from '../../components/ProductNotFound/ProductNotFound.js'
 import { remote_config } from '../../config/remoteURL';
+import styles from'./index.module.css'
 
 
 
@@ -51,7 +52,7 @@ const ProductPage = () => {
             </span>
             
           
-                <div style={{ display:"flex", flexWrap:"wrap",justifyContent:"center"}}>
+                <div className={styles.product_list}>
                     {loading && <LoadingSpinner/>}
                     {(product && product.length > 0)? product.map(product => (
                        <Product product = {product} isLoading= {loading}/>  

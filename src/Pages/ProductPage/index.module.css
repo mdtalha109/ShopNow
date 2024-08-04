@@ -1,0 +1,13 @@
+.product_list{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px; 
+}
+
+@media screen and (max-width:800px)  {
+    .product_list{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px; 
+    }
+}
