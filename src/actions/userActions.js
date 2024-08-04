@@ -56,7 +56,7 @@ export const register = (name, email, password) => async(dispatch) => {
              }
          }
  
-         const { data } = await axios.post('https://shopnow-backend-pro.herokuapp.com/api/user', {name, email, password}, config)  
+         const { data } = await axios.post(`${remote_config.BACKEND_URL}/api/user`, {name, email, password}, config)  
  
          dispatch({
              type: USER_REGISTER_SUCCESS, 
