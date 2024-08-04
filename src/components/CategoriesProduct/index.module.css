@@ -1,0 +1,26 @@
+.container_product_card{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px; 
+}
+
+
+@media screen and (max-width:800px)  {
+    .container_product_card{
+        justify-content: flex-start ;
+    }
+}
+
+@media screen and (max-width:800px)  {
+    .container_product_card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px; 
+        margin: 16px;
+        align-items: center;
+      }
+    
+      .product_card {
+        width: 150px;
+      }
+} 
