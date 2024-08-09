@@ -26,9 +26,10 @@ const CategoriesProduct = ({ categoryName, Limit, heading, style }) => {
                 <h1 className={styles.categories_title}>{heading}</h1>
 
                 <div className={styles.container_product_card}>
-                    {loading ? <div><ProductSkeletonLoader /></div> : ""}
+                   
                     {product && product.map(product => <Product product={product} />)}
                 </div>
+                {loading ? <div><ProductSkeletonLoader /></div> : ""}
             </div>
         </>
     )
