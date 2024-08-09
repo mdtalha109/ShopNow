@@ -23,7 +23,12 @@ const ProductScreen = ({ match }) => {
 
     useEffect(() => {
         dispatch(listProductDetails(id))
+        
     }, [dispatch, match, id])
+
+    useEffect(() => {
+        document.title = productDetail?.name || 'ShopNow'
+    }, [productDetail])
 
 
     if (loading) return <LoadingSpinner />
