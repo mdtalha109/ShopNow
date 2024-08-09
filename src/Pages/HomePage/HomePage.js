@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Loader from "react-loader-spinner";
-import { useDispatch, useSelector } from 'react-redux'
 import Categories from '../../components/Categories/Categories.js';
-import { ListProducts } from '../../actions/productAction.js';
+
 
 import CategoriesProduct from '../../components/CategoriesProduct/CategoriesProduct.js';
 
