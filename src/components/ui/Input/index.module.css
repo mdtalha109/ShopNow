@@ -7,14 +7,16 @@
     margin-bottom: 2px;
     font-weight: bold;
     font-size: 0.8rem;
+    text-align: left;
 }
 
 .input{
-    padding: 3px 3px;
+    padding: 6px 3px;
     display: block;
     width: 100%;
     border-radius: 5px;
-    border: 5px solid blue;
+    border: 1px solid #0070f3;
     outline: none;
+    background-color: white;
 
 }
