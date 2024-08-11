@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './index.module.css'; 
 
-const Card = ({ className, children }) => (
-  <div className={`${styles.card} ${className || ''}`}>
+const Card = ({ className, children, style }) => (
+  <div className={`${styles.card} ${className || ''}`} style={style}>
     {children}
   </div>
 );
