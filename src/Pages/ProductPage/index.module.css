@@ -4,6 +4,25 @@
     gap: 16px; 
 }
 
+.price_select{
+    width: 200px;
+    height: 40px;
+}
+
+.product_page_header_container{
+    display: flex;
+    justify-content: center;
+}
+
+.product_page_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 @media screen and (max-width:800px)  {
     .product_list{
         display: grid;
