@@ -28,10 +28,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
         type: ORDER_CREATE_SUCCESS,
         payload: data,
       })
-      dispatch({
-        type: CART_CLEAR_ITEMS,
-        // payload: data,
-      })
+     
      
       return data
     } catch (error) {
