@@ -18,12 +18,12 @@ const CartSummary = ({ cartItems }) => {
                     <Table>
                         <Table.Row>
                             <Table.Cell> Total prce:</Table.Cell>
-                            <Table.Cell> ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</Table.Cell>
+                            <Table.Cell> Rs {cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</Table.Cell>
                         </Table.Row>
 
                         <Table.Row>
                             <Table.Cell> Dilevery Charge:</Table.Cell>
-                            <Table.Cell> 100Rs </Table.Cell>
+                            <Table.Cell> Rs 100 </Table.Cell>
                         </Table.Row>
 
                     </Table>
